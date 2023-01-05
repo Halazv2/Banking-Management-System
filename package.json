@@ -1,0 +1,29 @@
+{
+  "name": "cdm",
+  "version": "1.0.0",
+  "description": "A web application for managing a bank's customers, accounts, and transactions.",
+  "main": "index.js",
+  "scripts": {
+    "server": "npm run dev --prefix server",
+    "client": "npm run dev --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Halazv2/Banking-Management-System.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "ExpressJS",
+    "MongoDB",
+    "Swagger",
+    "ReactJS",
+    "docker",
+    "joi"
+  ],
+  "author": "[Halazv2] (https://github.com/Halazv2 \"Halazv2\")",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Halazv2/Banking-Management-System/issues"
+  },
+  "homepage": "https://github.com/Halazv2/Banking-Management-System#readme"
+}
