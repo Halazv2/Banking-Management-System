@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  api-server:
+    build:
+      context: .
+    container_name: cmd-api
+    image: cmd-api
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - MONGO_URL=mongodb://host.docker.internal:27017/cmd_db
+    volumes:
+      - ./logs:/logs
+    networks:
+      - app-network
+    ports:
+      - "4000:4000"
+
+networks:
+  app-network:
+    driver: bridge
