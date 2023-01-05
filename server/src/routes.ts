@@ -1,6 +1,8 @@
 import {Router} from "express";
 import swaggerUi from "swagger-ui-express";
 const swaggerDocument = require("../openapi.json");
+import * as AccountsController from "./controllers/";
+import verifySignUp from "./middlewares/verifySignUp";
 
 const swaggerUiOptions = {
   customCss: ".swagger-ui .topbar { display: none }",
@@ -8,6 +10,11 @@ const swaggerUiOptions = {
 };
 
 const router = Router();
+router.get("/account", AccountsController.Accounts);
+router.post("/account", [verifySignUp.checkDuplicateEmail], AccountsController.AddAccount);
+router.get("/account/:id", AccountsController.GetAccountsByID);
+router.delete("/account/:id", AccountsController.DeleteAccount);
+router.get("/account/search/:name&:email&:pin", AccountsController.SearchAccount);
 
 if (process.env.NODE_ENV === "development") {
   router.use("/dev/api-docs", swaggerUi.serve);
