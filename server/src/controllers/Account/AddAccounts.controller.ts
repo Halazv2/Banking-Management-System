@@ -1,7 +1,7 @@
 import {Request, RequestHandler} from "express";
 import Joi from "joi";
-import requestMiddleware from "../middlewares/request-middleware";
-import Account from "../models/Acounts.model";
+import requestMiddleware from "../../middlewares/request-middleware";
+import Account from "../../models/Acounts.model";
 
 export const addAccountSchema = Joi.object().keys({
   name: Joi.string().required(),

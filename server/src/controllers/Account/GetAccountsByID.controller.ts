@@ -1,7 +1,7 @@
 import {RequestHandler} from "express";
-import requestMiddleware from "../middlewares/request-middleware";
-import Account from "../models/Acounts.model";
-import logger from "../logger";
+import requestMiddleware from "../../middlewares/request-middleware";
+import Account from "../../models/Acounts.model";
+import logger from "../../logger";
 
 const GetAccountsByID: RequestHandler = async (req, res) => {
   const {id} = req.params;

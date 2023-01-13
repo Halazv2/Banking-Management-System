@@ -1,7 +1,7 @@
 import {Request, RequestHandler} from "express";
-import requestMiddleware from "../middlewares/request-middleware";
-import Account from "../models/Acounts.model";
-import logger from "../logger";
+import requestMiddleware from "../../middlewares/request-middleware";
+import Account from "../../models/Acounts.model";
+import logger from "../../logger";
 
 const DeleteAccount: RequestHandler = async (req: Request, res) => {
   const {id} = req.params;
