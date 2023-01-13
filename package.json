@@ -6,6 +6,7 @@
   "scripts": {
     "server": "npm run dev --prefix server",
     "client": "npm run dev --prefix client",
+    "dev": "concurrently \"cd server && npm run dev\" \"cd client && npm run dev\" ",
     "admin": "npm run dev --prefix admin"
   },
   "repository": {
@@ -26,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/Halazv2/Banking-Management-System/issues"
   },
-  "homepage": "https://github.com/Halazv2/Banking-Management-System#readme"
+  "homepage": "https://github.com/Halazv2/Banking-Management-System#readme",
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  }
 }
