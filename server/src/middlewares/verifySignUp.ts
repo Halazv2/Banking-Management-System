@@ -12,20 +12,16 @@ import logger from "../logger";
 const checkDuplicateEmail = (req: Request, res: Response, next: NextFunction) => {
   Account.findOne({
     email: req.body.email,
-  }).exec((err, account) => {
+  }).exec((err, user) => {
     if (err) {
       res.status(500).send({message: err});
-      logger.log({level: "error", message: "Error on SignUp", error: err});
       return;
     }
 
-    if (account) {
-      res.status(400).send({message: "Failed! Email is already in use!"});
-      logger.log({level: "error", message: "Failed! Email is already in use!", error: err});
+    if (user) {
+      res.status(400).send({status: 400, message: "Failed! Email is already in use!"});
       return;
     }
-
-    logger.log({level: "info", message: "Email is not in use"});
 
     next();
   });
