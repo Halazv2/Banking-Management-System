@@ -8,16 +8,15 @@ A web application for managing a bank's customers, accounts, and transactions.
 - [X] ExpressJS
 - [X] MongoDB
 - [X] Swagger (for API documentation)
-- [ ] ReactJS (for the frontend)
+- [X] ReactJS (for the frontend)
 - [ ] docker (will be added soon to make it easier to run the application locally)
 
 ## Features
 
-- [ ] Add, view, edit, and delete customers
 - [X] Add, view, edit, and delete accounts
 - [ ] Perform transactions (deposits, withdrawals, and transfers)
 - [ ] View transaction history for an account
-- [ ] View customer and account information
+- [X] View customer and account information
 
 ## Getting Started
 
@@ -63,4 +62,4 @@ The API documentation can be found at http://localhost:4000/api-docs
 ## Author
 
 > [
->     Halazv2](https://github.com/Halazv2 "Halazv2")
+> Halazv2](https://github.com/Halazv2 "Halazv2")
