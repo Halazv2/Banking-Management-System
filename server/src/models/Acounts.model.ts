@@ -17,7 +17,7 @@ const schema = new Schema<IAccount>(
     name: {type: String, required: true},
     email: {type: String, required: true, unique: true, lowercase: true},
     pin: {type: String, required: true},
-    balance: {type: Number, required: true},
+    balance: {type: Number},
   },
   {timestamps: true}
 );
