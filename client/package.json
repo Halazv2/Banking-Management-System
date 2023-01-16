@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "formik": "^2.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -18,7 +19,8 @@
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.3.6",
-    "swr": "^2.0.0"
+    "swr": "^2.0.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.20",
