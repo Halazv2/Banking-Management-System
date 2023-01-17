@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {Link} from "react-scroll";
 // Assets
-import LogoImg from "../../assets/svg/Logo";
+import LogoIcon from "../../assets/img/logo.png";
 
 export default function Contact() {
   const getCurrentYear = () => {
@@ -15,10 +15,7 @@ export default function Contact() {
         <div className='container'>
           <InnerWrapper className='flexSpaceCenter' style={{padding: "30px 0"}}>
             <Link className='flexCenter animate pointer' to='home' smooth={true} offset={-80}>
-              <LogoImg />
-              <h1 className='font15 extraBold whiteColor' style={{marginLeft: "15px"}}>
-                CMD
-              </h1>
+              <img src={LogoIcon} alt='logo' style={{width: "90px", height: "70px", marginLeft: "15px"}} />
             </Link>
             <StyleP className='whiteColor font13'>
               © {getCurrentYear()} - <span className='purpleColor font13'>CMD</span> All Right Reserved | Made with <span className='purpleColor font13'>❤</span> by{" "}

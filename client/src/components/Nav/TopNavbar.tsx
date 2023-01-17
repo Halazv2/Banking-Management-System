@@ -5,8 +5,10 @@ import {Link} from "react-scroll";
 import Sidebar from "./Sidebar";
 import Backdrop from "../Elements/Backdrop";
 // Assets
-import LogoIcon from "../../assets/svg/Logo";
+import LogoIcon from "../../assets/img/logo.png";
 import BurgerIcon from "../../assets/svg/BurgerIcon";
+
+import {Link as LinkR} from "react-router-dom";
 
 export default function TopNavbar() {
   const [y, setY] = useState(window.scrollY);
@@ -26,10 +28,9 @@ export default function TopNavbar() {
       <Wrapper className='flexCenter animate whiteBg' style={y > 100 ? {height: "60px"} : {height: "80px"}}>
         <NavInner className='container flexSpaceCenter'>
           <Link className='pointer flexNullCenter' to='home' smooth={true}>
-            <LogoIcon />
-            <h1 style={{marginLeft: "15px"}} className='font20 extraBold'>
-              CMD
-            </h1>
+            <LinkR to='/'>
+              <img src={LogoIcon} alt='logo' style={{width: "90px", height: "70px", marginLeft: "15px"}} />
+            </LinkR>
           </Link>
           <BurderWrapper className='pointer' onClick={() => toggleSidebar(!sidebarOpen)}>
             <BurgerIcon />
@@ -37,7 +38,7 @@ export default function TopNavbar() {
           <UlWrapper className='flexNullCenter'>
             <li className='semiBold font15 pointer'>
               <Link activeClass='active' style={{padding: "10px 15px"}} to='home' spy={true} smooth={true} offset={-80}>
-                Home
+                <LinkR to='/'>Home</LinkR>
               </Link>
             </li>
             <li className='semiBold font15 pointer'>
@@ -58,14 +59,14 @@ export default function TopNavbar() {
           </UlWrapper>
           <UlWrapperRight className='flexNullCenter'>
             <li className='semiBold font15 pointer'>
-              <a href='/' style={{padding: "10px 30px 10px 0"}}>
+              <LinkR to='/sign-in' style={{padding: "10px 30px 10px 0"}}>
                 Log in
-              </a>
+              </LinkR>
             </li>
             <li className='semiBold font15 pointer flexCenter'>
-              <a href='/' className='radius8 lightBg' style={{padding: "10px 15px"}}>
+              <LinkR to='/create-account' className='radius8 lightBg' style={{padding: "10px 15px"}}>
                 Create Account
-              </a>
+              </LinkR>
             </li>
           </UlWrapperRight>
         </NavInner>
