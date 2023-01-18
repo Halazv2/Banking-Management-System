@@ -13,7 +13,7 @@ const getTransactionsOfAccount: RequestHandler = async (req, res) => {
       level: "info",
       message: "Transactions of account " + account._id + " fetched",
     });
-    res.send({message: "Transactions of account " + account._id + " fetched", transactions});
+    res.send({transactions});
   } else {
     logger.log({
       level: "warn",
