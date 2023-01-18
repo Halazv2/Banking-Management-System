@@ -1,5 +1,5 @@
 "use strict";
-import Account from "../../models/Acounts.model";
+import Account from "../../models/Accounts.model";
 import {Request, RequestHandler} from "express";
 import jwt from "jsonwebtoken";
 

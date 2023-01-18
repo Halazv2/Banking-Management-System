@@ -15,8 +15,12 @@ router.get("/account", [authJwt.verifyToken], AccountsController.Accounts);
 router.post("/account", [verifySignUp.checkDuplicateEmail], AccountsController.AddAccount);
 router.get("/account/:id", AccountsController.GetAccountsByID);
 router.delete("/account/:id", AccountsController.DeleteAccount);
-router.get("/account/search/:name&:email&:pin", AccountsController.SearchAccount);
 router.post("/auth", AccountsController.Auth);
+
+router.post("/transaction", AccountsController.sendMoney);
+router.get("/transaction/:id", AccountsController.getTransactionsOfAccount);
+router.delete("/transaction/:id", [authJwt.verifyToken], AccountsController.cancelTransaction);
+router.get("/transaction/download/:accountId", AccountsController.downloadRB);
 
 if (process.env.NODE_ENV === "development") {
   router.use("/dev/api-docs", swaggerUi.serve);

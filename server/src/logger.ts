@@ -23,6 +23,11 @@ const logTransports = [
 /** is used to log messages in the application
   * it is used in the following way:
   * logger.log({level: "info", message: "message to log", error: err});
+  * logger.log({level: "error", message: "message to log", error: err});
+  * logger.log({level: "warn", message: "message to log", error: err});
+  * logger.log({level: "debug", message: "message to log", error: err});
+  * logger.log({level: "silly", message: "message to log", error: err});
+  * logger.log({level: "verbose", message: "message to log", error: err});
  . */
 const logger = createLogger({
   format: format.combine(format.timestamp()),

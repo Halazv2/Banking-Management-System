@@ -1,6 +1,6 @@
 import {RequestHandler} from "express";
 import requestMiddleware from "../middlewares/request-middleware";
-import Account from "../models/Acounts.model";
+import Account from "../models/Accounts.model";
 import logger from "../logger";
 
 const SearchAccount: RequestHandler = async (req, res) => {

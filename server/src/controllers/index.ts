@@ -5,4 +5,10 @@ import DeleteAccount from "./Account/DeleteAccount.controlle";
 import Auth from "./Auth/Auth.controller";
 import SearchAccount from "./SearchAccount.controller";
 
-export {AddAccount, Accounts, GetAccountsByID, DeleteAccount, SearchAccount, Auth};
+import sendMoney from "./Transactions/sendMoney.controller";
+import getTransactionsOfAccount from "./Transactions/getTransactionsOfAccount";
+import cancelTransaction from "./Transactions/cancelTransaction";
+import downloadRB from "./Transactions/DownloadRB";
+
+
+export {AddAccount, Accounts, GetAccountsByID, DeleteAccount, SearchAccount, Auth, sendMoney, getTransactionsOfAccount, cancelTransaction, downloadRB};

@@ -1,4 +1,4 @@
-import Account from "../models/Acounts.model";
+import Account from "../models/Accounts.model";
 import {Request, Response, NextFunction} from "express";
 import logger from "../logger";
 

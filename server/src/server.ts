@@ -73,10 +73,10 @@ process.on("SIGINT", () => {
 });
 
 /* A handler for unhandled promise rejections. */
-process.on("unhandledRejection", (err: Error) => {
-  logger.log({
-    level: "error",
-    message: "Unhandled Rejection at Promise",
-    error: err,
-  }); 
-});
+// process.on("unhandledRejection", (err: Error) => {
+//   logger.log({
+//     level: "error",
+//     message: "Unhandled Rejection at Promise",
+//     error: err,
+//   }); 
+// });
