@@ -31,9 +31,7 @@ function UserMenu() {
   });
 
   const logout = () => {
-    localStorage.removeItem("userID");
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("userEmail");
+    localStorage.removeItem("token");
   };
 
   return (
