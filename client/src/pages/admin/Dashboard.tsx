@@ -33,7 +33,7 @@ function Dashboard() {
               {/* Filter button */}
               <AddTrip getTransactions={getTransactions} modalOpen={modalOpen} setModalOpen={setModalOpen} />
             </div>
-            <DashboardCard Transactions={Transactions} getTransactions={getTransactions} />
+            <DashboardCard />
           </div>
         </main>
       </div>
