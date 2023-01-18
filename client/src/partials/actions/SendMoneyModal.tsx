@@ -3,10 +3,11 @@ import Transition from "../../utils/Transition";
 import * as yup from "yup";
 import {Formik} from "formik";
 import "primeicons/primeicons.css";
+import useSendMoney from "../../hooks/transactions/sendMoney";
 
 const schema = yup.object().shape({
   message: yup.string().required("Message is required"),
-  Receiver: yup.string().required("Receiver is required"),
+  receiver: yup.string().required("receiver is required"),
   amount: yup.number().required("Amount is required"),
 });
 
@@ -24,7 +25,7 @@ function SendMoney({modalOpen, setModalOpen}: any) {
   });
 
   const handleOnSubmit = (values: any) => {
-    console.log(values);
+    useSendMoney(values);
   };
 
   return (
@@ -72,13 +73,13 @@ function SendMoney({modalOpen, setModalOpen}: any) {
           {/* Search form */}
           <Formik
             initialValues={{
-              Receiver: "",
-              message: "",
+              receiver: "",
               amount: "",
             }}
             validationSchema={schema}
-            onSubmit={(values) => {
+            onSubmit={(values, {setSubmitting}) => {
               handleOnSubmit(values);
+              setSubmitting(false);
             }}
           >
             {({values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting, setFieldValue, isValid}) => (
@@ -87,31 +88,17 @@ function SendMoney({modalOpen, setModalOpen}: any) {
                   <div className='flex flex-col w-full items-center justify-center gap-6 mb-4'>
                     <div className='flex flex-col w-full'>
                       <label className='text-sm font-medium text-gray-700'>
-                        Receiver <span className='text-red-500'>*</span>
+                        Receiver ID <span className='text-red-500'>*</span>
                       </label>
                       <input
                         type='text'
-                        name='Receiver'
+                        name='receiver'
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        value={values.Receiver}
+                        value={values.receiver}
                         className='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
                       />
-                      <div className='text-red-500 text-xs italic'>{errors.Receiver && touched.Receiver && errors.Receiver}</div>
-                    </div>
-                    <div className='flex flex-col w-full'>
-                      <label className='text-sm font-medium text-gray-700'>
-                        Message <span className='text-red-500'>*</span>
-                      </label>
-                      <input
-                        type='text'
-                        name='message'
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        value={values.message}
-                        className='border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150'
-                      />
-                      <div className='text-red-500 text-xs italic'>{errors.message && touched.message && errors.message}</div>
+                      <div className='text-red-500 text-xs italic'>{errors.receiver && touched.receiver && errors.receiver}</div>
                     </div>
                     <div className='flex flex-col w-full'>
                       <label className='text-sm font-medium text-gray-700'>
@@ -128,7 +115,17 @@ function SendMoney({modalOpen, setModalOpen}: any) {
                       <div className='text-red-500 text-xs italic'>{errors.amount && touched.amount && errors.amount}</div>
                     </div>
                   </div>
-                  <button type='submit' disabled={!isValid} className='w-full text-white bg-indigo-600 hover:bg-indigo-700 p-2 flex justify-center rounded relative'>
+                  <button
+                    onClick={() => {
+                      handleOnSubmit(values);
+                      setModalOpen(false);
+                      values.receiver = "";
+                      values.amount = "";
+                    }}
+                    type='submit'
+                    disabled={isSubmitting}
+                    className='w-full text-white bg-indigo-600 hover:bg-indigo-700 p-2 flex justify-center rounded relative'
+                  >
                     Submit
                   </button>
                 </div>
