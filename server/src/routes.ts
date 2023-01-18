@@ -22,6 +22,7 @@ router.get("/transaction/:id", AccountsController.getTransactionsOfAccount);
 router.delete("/transaction/:id", [authJwt.verifyToken], AccountsController.cancelTransaction);
 router.get("/transaction/download/:accountId", AccountsController.downloadRB);
 
+
 if (process.env.NODE_ENV === "development") {
   router.use("/dev/api-docs", swaggerUi.serve);
   router.get("/dev/api-docs", swaggerUi.setup(swaggerDocument, swaggerUiOptions));
