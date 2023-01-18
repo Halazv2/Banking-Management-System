@@ -18,9 +18,14 @@ const login = async (req: Request<{}, {}, addAccountBody>, res: any) => {
     res.send({message: "Pin is incorrect"});
   }
 
-  var token = jwt.sign({id: account._id}, process.env.SECRET as string, {
+  let token = jwt.sign({id: account._id}, process.env.SECRET as string, {
     expiresIn: 86400,
   });
-  res.status(200).send({auth: true, token: token});
+  let response = {
+    auth: true,
+    token: token,
+    account: account,
+  };
+  res.status(200).send(response);
 };
 export default login;

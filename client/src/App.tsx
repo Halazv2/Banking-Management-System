@@ -1,4 +1,5 @@
 import {Navigate, useRoutes} from "react-router-dom";
+import {useState, useEffect} from "react";
 // pages
 import Landing from "./pages/Landing";
 import TopNavbar from "../src/components/Nav/TopNavbar";
@@ -11,6 +12,15 @@ import DashboardUser from "./pages/admin/DashboardUser";
 import BankStatement from "./pages/admin/BankStatement";
 
 function App() {
+  const token = localStorage.getItem("token");
+  const [isAuthanticated, setIsAuthanticated] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      setIsAuthanticated(true);
+    }
+  }, [token]);
+
   const routes = useRoutes([
     {path: "/", element: <Landing />},
     {path: "/unauthorized", element: <UnAuthorized />},
@@ -28,7 +38,7 @@ function App() {
     {path: "/404", element: <NotFound />},
     // {path: "*", element: <Navigate to='/404' />},
   ]);
-  const isAuthanticated = true;
+
   return (
     <>
       {!isAuthanticated ? (

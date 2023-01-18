@@ -1,13 +1,21 @@
 import {Formik, Form, Field, ErrorMessage} from "formik";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import * as Yup from "yup";
 import logo from "../../assets/img/logo.png";
 import useLogin from "../../hooks/auth/useLogin";
 
-export default function Login() {
+export default function Login(setIsAuthanticated: any, authanticated: boolean) {
   const initialValues = {
     email: "",
     pin: "",
+  };
+
+  const navigate = useNavigate();
+  const login = async (values: any) => {
+    const data = await useLogin(values, navigate);
+    if (data as any) {
+      navigate("/Transactions");
+    }
   };
 
   const validationSchema = Yup.object({
@@ -32,7 +40,7 @@ export default function Login() {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={(values, {setSubmitting}) => {
-              useLogin(values);
+              login(values);
               setSubmitting(false);
             }}
           >
@@ -64,7 +72,7 @@ export default function Login() {
                 </div>
                 <div className='flex flex-col justify-end items-end w-full gap-4'>
                   <h1 className='text-sm text-gray-500'>
-                    Don't have an account?
+                    Don't have an account? &nbsp;
                     <Link to='/create-account' className='text-blue-500 hover:text-blue-700'>
                       Create one
                     </Link>
